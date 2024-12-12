@@ -65,6 +65,10 @@ npm run start
 /tasks/id [DELETE]
 ```
 
+### Postman
+
+[Postman Collection](./postman/Todo%20App.postman_collection.json)
+
 #
 
 Work by Satshree Shrestha
