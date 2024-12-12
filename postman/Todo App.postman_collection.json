@@ -1,0 +1,362 @@
+{
+	"info": {
+		"_postman_id": "5c08b3f9-0b4f-4518-aee4-2dd35a8f365c",
+		"name": "Todo App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8972739"
+	},
+	"item": [
+		{
+			"name": "Get all tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/tasks/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tasks",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all tasks",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/tasks/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"tasks",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "82"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"52-UlYwCHwUFOPH8WkZcF3H1rtXm88\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Dec 2024 03:16:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"title\",\n        \"color\": \"#fff\",\n        \"completed\": false,\n        \"timestamp\": 1733970295\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Add task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"title\",\n    \"color\": \"#fff\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/tasks/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tasks",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add task",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"title\",\n    \"color\": \"#fff\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/tasks/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"tasks",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "80"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"50-vTh83yNXP6l6GAfA3sWK8vasNbI\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Dec 2024 03:16:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 6,\n    \"title\": \"title\",\n    \"color\": \"#fff\",\n    \"completed\": false,\n    \"timestamp\": 1733973401\n}"
+				}
+			]
+		},
+		{
+			"name": "Edit task",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"title\",\n    \"color\": \"#fff\",\n    \"completed\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/tasks/id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tasks",
+						"id"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Edit task",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"title\",\n    \"color\": \"#fff\",\n    \"completed\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/tasks/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"tasks",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "79"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4f-YNn6oPOOBFRpyxc+uc7ykZK1RUM\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Dec 2024 03:16:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"title\": \"title\",\n    \"color\": \"#fff\",\n    \"completed\": true,\n    \"timestamp\": 1733970295\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete task",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/tasks/id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"tasks",
+						"id"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete task",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/tasks/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"tasks",
+								"6"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "26"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1a-EXuvryuVXWlMt0iHutTdXWDMZ38\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Dec 2024 03:17:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Task deleted\"\n}"
+				}
+			]
+		}
+	]
+}
