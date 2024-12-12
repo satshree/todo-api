@@ -7,11 +7,23 @@ import { serializeTask, serializeTaskList } from "../utilities";
 const prisma = new PrismaClient();
 
 // API ROUTE CONTROLLERS
+
+/**
+ * API Controller that returns list of all tasks
+ * @param req
+ * @param res
+ */
 export async function getAllTasks(req: Request, res: Response) {
   const todos = await prisma.todo.findMany();
   res.json(serializeTaskList(todos));
 }
 
+/**
+ * API Controller that adds task to the database
+ * @param req
+ * @param res
+ * @returns
+ */
 export async function addTask(req: Request, res: Response) {
   try {
     const data = req.body;
@@ -37,6 +49,12 @@ export async function addTask(req: Request, res: Response) {
   }
 }
 
+/**
+ * API Controller that updates the given task. ID must be provided through URL parameter.
+ * @param req
+ * @param res
+ * @returns
+ */
 export async function updateTask(req: Request, res: Response) {
   try {
     const { id } = req.params;
@@ -47,7 +65,6 @@ export async function updateTask(req: Request, res: Response) {
       return;
     }
 
-    console.log("data", data);
     if (!data.title || !data.color || data.completed === undefined) {
       res
         .status(400)
@@ -68,6 +85,12 @@ export async function updateTask(req: Request, res: Response) {
   }
 }
 
+/**
+ * API Controller that deletes the given task. ID must be provided through URL parameter.
+ * @param req
+ * @param res
+ * @returns
+ */
 export async function deleteTask(req: Request, res: Response) {
   try {
     const { id } = req.params;
