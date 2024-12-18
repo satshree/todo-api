@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
+import Fuse from "fuse.js";
 
 import { serializeTask, serializeTaskList } from "../utilities";
 
@@ -14,8 +15,31 @@ const prisma = new PrismaClient();
  * @param res
  */
 export async function getAllTasks(req: Request, res: Response) {
-  const todos = await prisma.todo.findMany();
-  res.json(serializeTaskList(todos));
+  const options = {
+    includeScore: true,
+    keys: ["title"],
+  };
+
+  const todos = (await prisma.todo.findMany()).sort((p, n) => {
+    if (p.level < n.level) {
+      return 1;
+    } else if (p.level > n.level) {
+      return -1;
+    }
+
+    return 0;
+  });
+
+  const q = req.query.q;
+
+  if (!q) {
+    res.json(serializeTaskList(todos));
+  } else {
+    const fuse = new Fuse(todos, options);
+    const result = fuse.search(q.toString());
+
+    res.json(serializeTaskList(result.map((newList) => newList.item)));
+  }
 }
 
 /**
@@ -28,6 +52,8 @@ export async function addTask(req: Request, res: Response) {
   try {
     const data = req.body;
 
+    console.log("Data", data);
+
     if (!data.title || !data.color) {
       res.status(400).json({ message: "'title' and 'color' are required" });
       return;
@@ -37,6 +63,7 @@ export async function addTask(req: Request, res: Response) {
       data: {
         title: data.title,
         color: data.color,
+        level: data.level,
       },
     });
 

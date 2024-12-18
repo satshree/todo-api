@@ -21,6 +21,7 @@ export function serializeTask(data: any): Task {
     id: data["id"],
     title: data["title"],
     color: data["color"],
+    level: data["level"],
     completed: data["completed"],
     timestamp: convertDateToTimestamp(data["timestamp"]),
   };

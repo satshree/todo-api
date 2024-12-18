@@ -11,6 +11,7 @@ model Todo {
   id          Int      @id @default(autoincrement())
   title       String
   color       String
+  level       Int      @default(1)
   completed   Boolean  @default(false)
   timestamp   DateTime @default(now())
 }
